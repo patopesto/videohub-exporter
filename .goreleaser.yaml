@@ -42,6 +42,13 @@ changelog:
       - "^docs:"
       - "^test:"
 
+dockers:
+  - image_templates:
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}"
+      - "registry.gitlab.com/patopest/videohub-exporter:v{{ .Major }}"
+      - "registry.gitlab.com/patopest/videohub-exporter:v{{ .Major }}.{{ .Minor }}"
+      - "registry.gitlab.com/patopest/videohub-exporter:latest"
+
 
 release:
   # Add github manually
