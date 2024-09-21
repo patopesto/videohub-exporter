@@ -2,4 +2,4 @@
 .DS_Store
 
 # Go build output
-videohub-exporter
+videohub_exporter

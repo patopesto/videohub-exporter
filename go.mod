@@ -1,4 +1,4 @@
-module gitlab.com/patopest/videohub-exporter
+module gitlab.com/patopest/videohub_exporter
 
 go 1.23.1
 

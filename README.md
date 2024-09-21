@@ -22,9 +22,9 @@ View all available configuration options
 
 ```bash
 docker run --rm \
-  -p 9990/tcp \
+  -p 9990:9990 \
   --name videohub_exporter \
-  registry.gitlab.com/patopest/videohub_exporter:latest
+  registry.gitlab.com/patopest/videohub-exporter:latest
 ```
 
 ## Metrics
