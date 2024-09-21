@@ -43,4 +43,7 @@ changelog:
       - "^test:"
 
 release:
-  gitlab:
+  # Add github manually
+  github:
+    owner: patopesto
+    name: videohub-exporter
