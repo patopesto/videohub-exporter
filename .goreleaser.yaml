@@ -44,11 +44,31 @@ changelog:
 
 dockers:
   - image_templates:
-      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}"
-      - "registry.gitlab.com/patopest/videohub-exporter:v{{ .Major }}"
-      - "registry.gitlab.com/patopest/videohub-exporter:v{{ .Major }}.{{ .Minor }}"
-      - "registry.gitlab.com/patopest/videohub-exporter:latest"
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-amd64"
+      - "registry.gitlab.com/patopest/videohub-exporter:latest-amd64"
+    use: buildx
+    build_flag_templates:
+      - "--pull"
+      - "--platform=linux/amd64"
+  - image_templates:
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-arm64"
+      - "registry.gitlab.com/patopest/videohub-exporter:latest-arm64"
+    use: buildx
+    build_flag_templates:
+      - "--pull"
+      - "--platform=linux/arm64"
+    goarch: arm64
 
+# Combine manifests to create one multi-platform image
+docker_manifests:
+  - name_template: "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}"
+    image_templates:
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-amd64"
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-arm64"
+  - name_template: "registry.gitlab.com/patopest/videohub-exporter:latest"
+    image_templates:
+      - "registry.gitlab.com/patopest/videohub-exporter:latest-amd64"
+      - "registry.gitlab.com/patopest/videohub-exporter:latest-arm64"
 
 release:
   # Add github manually
