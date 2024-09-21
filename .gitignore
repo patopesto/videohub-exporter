@@ -3,3 +3,4 @@
 
 # Go build output
 videohub_exporter
+dist/

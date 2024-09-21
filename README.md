@@ -6,7 +6,7 @@ A prometheus exporter for [Blackmagic Videohubs](https://www.blackmagicdesign.co
 
 ### Binaries
 
-Download binary from [releases](https://gitlab.com/patopest/videohub-exporter/releases)
+Download binary from [releases](https://gitlab.com/patopest/videohub-exporter/-/releases)
 
 ```bash
 ./videohub_exporter <flags>
