@@ -14,6 +14,8 @@ builds:
       - linux
       - windows
       - darwin
+    flags:
+      - -trimpath
     ldflags:
       # Populate fields at build time for the prometheus version collector
       - -X github.com/prometheus/common/version.Version={{ .Version }}
@@ -45,14 +47,12 @@ changelog:
 dockers:
   - image_templates:
       - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-amd64"
-      - "registry.gitlab.com/patopest/videohub-exporter:latest-amd64"
     use: buildx
     build_flag_templates:
       - "--pull"
       - "--platform=linux/amd64"
   - image_templates:
       - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-arm64"
-      - "registry.gitlab.com/patopest/videohub-exporter:latest-arm64"
     use: buildx
     build_flag_templates:
       - "--pull"
@@ -67,8 +67,8 @@ docker_manifests:
       - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-arm64"
   - name_template: "registry.gitlab.com/patopest/videohub-exporter:latest"
     image_templates:
-      - "registry.gitlab.com/patopest/videohub-exporter:latest-amd64"
-      - "registry.gitlab.com/patopest/videohub-exporter:latest-arm64"
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-amd64"
+      - "registry.gitlab.com/patopest/videohub-exporter:{{ .Tag }}-arm64"
 
 release:
   # Add github manually
